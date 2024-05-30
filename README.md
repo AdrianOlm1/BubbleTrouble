@@ -26,7 +26,7 @@ Bubble Trouble is an exciting, time-based game developed using Pygame. Players n
 2. **Install Dependencies**:
 Make sure you have Python and Pygame installed. You can install Pygame using pip:
    ```bash
-   pip install game
+   pip install pygame
 3. **Run the Game**:
    ```bash
    python BubbleTrouble.py
