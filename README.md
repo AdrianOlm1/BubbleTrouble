@@ -22,7 +22,7 @@ Bubble Trouble is an exciting, time-based game developed using Pygame. Players n
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/AdrianOlm1/BubbleTrouble.git
-   cd bubble-trouble
+   cd BubbleTrouble
 2. **Install Dependencies**:
 Make sure you have Python and Pygame installed. You can install Pygame using pip:
    ```bash
