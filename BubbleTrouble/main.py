@@ -43,8 +43,6 @@ pygame.mixer.music.load('sounds/background.ogg')
 # Clock to control the frame rate
 clock = pygame.time.Clock()
 
-pygame.mixer.music.play(-1)
-
 def reset_time():
     global start_time, remaining_time, timefix, pausefix
     remaining_time = COUNTDOWN
@@ -430,8 +428,18 @@ coins = pygame.sprite.Group()
 bubble_size = 60
 
 async def main():
+    # Give browser time to initialize
+    await asyncio.sleep(0)
+
     weapon_handler = WeaponHandler(player)
     reset_game()
+
+    # Start background music (try-except for browser compatibility)
+    try:
+        pygame.mixer.music.play(-1)
+    except:
+        pass  # Music may fail in some browsers
+
     running = True
     global pause
     pause = False
@@ -458,7 +466,10 @@ async def main():
                 timefix -= (DEATH_COST-1)
                 square_die.play()
                 reset_game_after_death()
-                pygame.time.wait(1000)  # Wait for 1 second
+                # Non-blocking delay for web
+                for _ in range(60):  # ~1 second at 60 FPS
+                    await asyncio.sleep(0)
+                    clock.tick(FPS)
 
             # Check for collisions with projectiles
             hits = pygame.sprite.groupcollide(bubbles, player.projectiles, True, False)
@@ -524,5 +535,5 @@ async def main():
 
     pygame.quit()
 
-if __name__ == "__main__":
-    asyncio.run(main())
+# Pygbag-compatible entry point
+asyncio.run(main())
