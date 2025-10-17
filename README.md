@@ -2,6 +2,12 @@
 
 Bubble Trouble is an exciting, time-based game developed using Pygame. Players navigate through various levels, facing different challenges while using a variety of weapons to defeat enemies. The game includes custom sounds, textures, and a unique level system to enhance the gaming experience.
 
+## Play Online
+
+Play the game directly in your browser: [https://adrianolm1.github.io/BubbleTrouble/](https://adrianolm1.github.io/BubbleTrouble/)
+
+The web version is automatically deployed using GitHub Pages and pygbag whenever changes are pushed to the main branch.
+
 ## Features
 
 - **Time-Based Gameplay**: Complete levels within a specified time limit.
@@ -19,17 +25,41 @@ Bubble Trouble is an exciting, time-based game developed using Pygame. Players n
 
 ## Installation
 
+### Play in Browser (Recommended)
+Simply visit [https://adrianolm1.github.io/BubbleTrouble/](https://adrianolm1.github.io/BubbleTrouble/) to play instantly without any installation!
+
+### Run Locally
+
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/AdrianOlm1/BubbleTrouble.git
    cd BubbleTrouble
+   ```
+
 2. **Install Dependencies**:
-Make sure you have Python and Pygame installed. You can install Pygame using pip:
+   Make sure you have Python and Pygame installed. You can install Pygame using pip:
    ```bash
    pip install pygame
+   ```
+
 3. **Run the Game**:
    ```bash
-   python BubbleTrouble.py
+   cd BubbleTrouble
+   python main.py
+   ```
+
+### Build Web Version Locally
+
+1. **Install pygbag**:
+   ```bash
+   pip install pygbag
+   ```
+
+2. **Build and serve the game**:
+   ```bash
+   pygbag BubbleTrouble
+   ```
+   Then open your browser to `http://localhost:8000`
 
 ## How to Play
 - **Movement**: Use the left and right arrow keys to move the player.
@@ -59,3 +89,23 @@ Make sure you have Python and Pygame installed. You can install Pygame using pip
 - `display()`: Updates and displays the game HUD.
 - `display_game_over()`: Shows the game over screen and handles replay logic.
 - `display_pause()`: Shows the pause screen.
+
+## Web Deployment
+
+This game is automatically deployed to GitHub Pages using pygbag. The deployment workflow:
+
+1. Converts the Pygame code to run in the browser using WebAssembly
+2. Packages all assets (sounds, fonts, graphics) into the web build
+3. Deploys to GitHub Pages automatically on every push to main branch
+
+### Setting Up GitHub Pages
+
+To enable deployment for your own fork:
+
+1. Go to your repository Settings
+2. Navigate to "Pages" in the left sidebar
+3. Under "Build and deployment", set Source to "GitHub Actions"
+4. Push changes to the main branch to trigger automatic deployment
+5. Your game will be available at `https://[your-username].github.io/BubbleTrouble/`
+
+The game will work with all sounds and assets in the browser!
