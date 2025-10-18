@@ -516,6 +516,9 @@ async def main():
 
         pygame.display.flip()
 
+        # Maintain 60 FPS timing (like Life Maze does with clock.tick)
+        clock.tick(FPS)
+
         if remaining_time <= 0:
             pygame.mixer.music.pause()
             continue_game = await display_game_over()
@@ -525,7 +528,7 @@ async def main():
                 reset_game()
                 pygame.mixer.music.unpause()
 
-        # Browser controls frame rate via asyncio.sleep(0)
+        # Yield to browser (like Life Maze)
         await asyncio.sleep(0)
 
     pygame.quit()
