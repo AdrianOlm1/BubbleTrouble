@@ -105,5 +105,19 @@
     </div>
 
     <script src="pygbag.js"></script>
+    <script>
+        // Remove the "are you sure you want to leave" prompt
+        window.addEventListener('load', function() {
+            window.onbeforeunload = null;
+            // Also prevent pygbag from adding it back
+            const originalAddEventListener = window.addEventListener;
+            window.addEventListener = function(type, listener, options) {
+                if (type === 'beforeunload') {
+                    return; // Don't add beforeunload listeners
+                }
+                return originalAddEventListener.call(this, type, listener, options);
+            };
+        });
+    </script>
 </body>
 </html>

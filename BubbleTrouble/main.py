@@ -525,9 +525,8 @@ async def main():
                 reset_game()
                 pygame.mixer.music.unpause()
 
-        # Yield to browser first, then limit frame rate
+        # Browser controls frame rate via asyncio.sleep(0)
         await asyncio.sleep(0)
-        clock.tick(60)
 
     pygame.quit()
 
