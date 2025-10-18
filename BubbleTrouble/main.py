@@ -466,10 +466,8 @@ async def main():
                 timefix -= (DEATH_COST-1)
                 square_die.play()
                 reset_game_after_death()
-                # Non-blocking delay for web
-                for _ in range(60):  # ~1 second at 60 FPS
-                    await asyncio.sleep(0)
-                    clock.tick(FPS)
+                # Brief non-blocking pause after death
+                await asyncio.sleep(0.5)
 
             # Check for collisions with projectiles
             hits = pygame.sprite.groupcollide(bubbles, player.projectiles, True, False)
